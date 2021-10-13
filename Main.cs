@@ -42,6 +42,7 @@ namespace MixyWhitelister
                 if (!Configuration.Instance.SteamIDList.Contains(target.CSteamID.ToString()))
                 {
                     Configuration.Instance.SteamIDList.Add(target.CSteamID.ToString());
+                    Configuration.Save();
                     target.Player.disablePluginWidgetFlag(EPluginWidgetFlags.Modal);
                     UnturnedChat.Say(target, Translate("YouAddWhitelist"), Color.green);
                 }
@@ -66,6 +67,7 @@ namespace MixyWhitelister
                 if (Configuration.Instance.SteamIDList.Contains(target.CSteamID.ToString()))
                 {
                     Configuration.Instance.SteamIDList.Remove(target.CSteamID.ToString());
+                     Configuration.Save();
                     target.Kick(Translate("YouRemoveWhitelist"));
                 }
                 else
